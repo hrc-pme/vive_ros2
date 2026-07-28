@@ -1,0 +1,12 @@
+build/
+install/
+log/
+*.db3
+*.db3-wal
+*.db3-shm
+*.mcap
+*.mcap.active
+exp1_*
+test_*
+__pycache__/
+*.pyc

@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  vive_tracker:
+    build: .
+    image: vive_tracker_humble:latest
+    container_name: vive_tracker_node
+    network_mode: "host"
+    ipc: "host"
+    pid: "host"
+    privileged: true
+    user: "1000:1000"
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - /dev:/dev
+      
+      - /home/milo/Desktop/HRCLAB/vive:/ros2_ws/Desktop/HRCLAB/vive
+      
+      
+      - /home/milo/.config/openvr:/home/milo/.config/openvr
+      - /home/milo/.steam:/home/milo/.steam
+      - /home/milo/.local/share/Steam:/home/milo/.local/share/Steam
+      
+      
+      - /home/milo/.ros:/home/milo/.ros
+      
+      
+      - /tmp:/tmp
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /run/user/1000:/run/user/1000
+    environment:
+      - HOME=/home/milo
+      - ROS_DOMAIN_ID=150
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - DISPLAY=${DISPLAY}
+      - XDG_RUNTIME_DIR=/run/user/1000
+    stdin_open: true
+    tty: true
